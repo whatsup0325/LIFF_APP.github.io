@@ -34,7 +34,7 @@
 		<div style="display: flex; justify-content: center; align-items: center;    ">
 			圖片網址:
 	
-			<input id="imgUrl" value="https://imgur.com/a/7BQNeQn"  style=" height: 30px; margin-left: 10px; 	"/>
+			<input id="imgUrl" value="https://i.imgur.com/8PfHQR6.gif"  style=" height: 30px; margin-left: 10px; 	"/>
 		</div>
 		<div style="display: flex; justify-content: center; align-items: center;    ">
 			顯示金額:
@@ -62,7 +62,7 @@
 	<button id="btnLogOut" onclick="logOut()" style="display: none;margin: 20px auto;padding: 20px;">Logout</button>
 	<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 	<script>
-		
+		console.log("https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=image&downloadUrl="+document.getElementById("imgUrl").value+"&previewUrl="+document.getElementById("imgUrl").value)
 		async function sendShare_Gift() {
 			let returnUrl = ""
 			if(document.getElementById("imageRadio").checked){
