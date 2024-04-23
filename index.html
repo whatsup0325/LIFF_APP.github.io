@@ -62,12 +62,13 @@
 	<button id="btnLogOut" onclick="logOut()" style="display: none;margin: 20px auto;padding: 20px;">Logout</button>
 	<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 	<script>
-		if(document.getElementById("imageRadio").checked){
-			returnUrl = "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=image&downloadUrl="+document.getElementById("imgUrl").value+"&previewUrl="+document.getElementById("imgUrl").value
-		}else{
-			returnUrl = "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=text&text=" + encodeURIComponent(document.getElementById("fakeMessage").value)
-		}
+		
 		async function sendShare_Gift() {
+			if(document.getElementById("imageRadio").checked){
+				returnUrl = "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=image&downloadUrl="+document.getElementById("imgUrl").value+"&previewUrl="+document.getElementById("imgUrl").value
+			}else{
+				returnUrl = "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=text&text=" + encodeURIComponent(document.getElementById("fakeMessage").value)
+			}
 			name = await liff.getProfile().then((profile) => {
 				return profile.displayName;
 			}).catch((err) => {
@@ -227,6 +228,11 @@
 		}
 
 		async function sendShare_Ladder() {
+			if(document.getElementById("imageRadio").checked){
+				returnUrl = "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=image&downloadUrl="+document.getElementById("imgUrl").value+"&previewUrl="+document.getElementById("imgUrl").value
+			}else{
+				returnUrl = "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=text&text=" + encodeURIComponent(document.getElementById("fakeMessage").value)
+			}
 			name = await liff.getProfile().then((profile) => {
 				return profile.displayName;
 			}).catch((err) => {
@@ -351,6 +357,12 @@
 		}
 		
 		async function sendShare_Pay() {
+			if(document.getElementById("imageRadio").checked){
+				returnUrl = "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=image&downloadUrl="+document.getElementById("imgUrl").value+"&previewUrl="+document.getElementById("imgUrl").value
+			}else{
+				returnUrl = "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=text&text=" + encodeURIComponent(document.getElementById("fakeMessage").value)
+			}
+
 			name = await liff.getProfile().then((profile) => {
 				return profile.displayName;
 			}).catch((err) => {
@@ -483,6 +495,11 @@
 		}
 		
 		async function Red_Env() {
+			if(document.getElementById("imageRadio").checked){
+				returnUrl = "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=image&downloadUrl="+document.getElementById("imgUrl").value+"&previewUrl="+document.getElementById("imgUrl").value
+			}else{
+				returnUrl = "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=text&text=" + encodeURIComponent(document.getElementById("fakeMessage").value)
+			}
 			name = await liff.getProfile().then((profile) => {
 				return profile.displayName;
 			}).catch((err) => {
