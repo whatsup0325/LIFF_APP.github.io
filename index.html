@@ -23,7 +23,7 @@
 	<button id="btnShare2" onclick="sendShare_Ladder()" style="display: none;margin: 20px auto;padding: 20px;">Ladder</button>
 	<button id="btnShare3" onclick="sendShare_Pay()" style="display: none;margin: 20px auto;padding: 20px;">Pay</button>
   <button id="btnShare3" onclick="sendShare_Pay()" style="display: none;margin: 20px auto;padding: 20px;">Pay</button>
-  <input type="number" style="display: none;margin: 20px auto;padding: 20px;">
+  <input id="linePayAmount" type="number" style="display: none;margin: 20px auto;padding: 20px;">
 	<button id="btnLogin" onclick="liff.login()" style="display: none;margin: 20px auto;padding: 20px;">Log In</button>
 	<button id="btnLogOut" onclick="logOut()" style="display: none;margin: 20px auto;padding: 20px;">Log Out</button>
 	<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
@@ -320,7 +320,7 @@
 			const result = await liff.shareTargetPicker([
 				{
 					"type": "flex",
-					"altText": "已收到NT$ 520的轉帳。",
+					"altText": "已收到NT$ "+ $("#linePayAmount").val() +" 的轉帳。",
 					"contents": {
 						  "type": "bubble",
 						  "size": "hecto",
@@ -353,7 +353,7 @@
 							  },
 							  {
 								"type": "text",
-								"text": "您已收到 NT$ 520。（來自："+ name +"）",
+								"text": "您已收到 NT$ "+ $("#linePayAmount").val()  +"。（來自："+ name +"）",
 								"size": "xs",
 								"contents": [],
 								"color": "#8E8E8E",
@@ -454,6 +454,7 @@
 				document.getElementById("btnShare").style.display = "block"
 				document.getElementById("btnShare2").style.display = "block"
 				document.getElementById("btnShare3").style.display = "block"
+				document.getElementById("linePayAmount").style.display = "block"
 				if (!liff.isInClient()) {
 					document.getElementById("btnLogOut").style.display = "block"
 				}
