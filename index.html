@@ -25,19 +25,33 @@
 </head>
 
 <body>
-	<div id="inputContainer" style="display: none; justify-content: center; align-items: center;  gap:30px  ">
+	<div id="inputContainer" style="display: none; justify-content: center; align-items: center; flex-direction: column; gap:10px ">
 		<div style="display: flex; justify-content: center; align-items: center;    ">
 			禮物訊息:
 	
-			<input id="fakeMessage" style=" height: 30px; margin-left: 10px;"/>
+			<input id="fakeMessage" value="咩修幹某"  style=" height: 30px; margin-left: 10px;"/>
 		</div>
 		<div style="display: flex; justify-content: center; align-items: center;    ">
-			金額:
+			圖片網址:
 	
-			<input id="linePayAmount" style=" height: 30px; margin-left: 10px;"/>
+			<input id="imgUrl" value="https://imgur.com/a/7BQNeQn"  style=" height: 30px; margin-left: 10px; 	"/>
+		</div>
+		<div style="display: flex; justify-content: center; align-items: center;    ">
+			顯示金額:
+	
+			<input id="linePayAmount" value="520" style=" height: 30px; margin-left: 10px;"/>
 		</div>
 	</div>
-	
+	<div id="inputContainer2" style="display: none; justify-content: center; align-items: center;  gap:30px ; margin-top: 20px;">
+		
+		<div>
+			<label for="huey">回傳方式:</label>
+			<input type="radio" id="textRadio" name="use" value="text" checked />
+			<label for="textRadio">文字</label>
+			<input type="radio" id="imageRadio" name="use" value="image"  />
+			<label for="imageRadio">圖片</label>
+		</div>
+	</div>
 	<button id="btnShare" onclick="sendShare_Gift()" style="display: none;margin: 20px auto;padding: 20px;">發送禮物</button>
 	
 	<button id="btnShare2" onclick="sendShare_Ladder()" style="display: none;margin: 20px auto;padding: 20px;">爬梯子</button>
@@ -48,7 +62,11 @@
 	<button id="btnLogOut" onclick="logOut()" style="display: none;margin: 20px auto;padding: 20px;">Logout</button>
 	<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 	<script>
-		const imgUrl = 'https://imgur.com/a/7BQNeQn';
+		if(document.getElementById("imageRadio").checked){
+			returnUrl = "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=image&downloadUrl="+document.getElementById("imgUrl").value+"&previewUrl="+document.getElementById("imgUrl").value
+		}else{
+			returnUrl = "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=text&text=" + encodeURIComponent(document.getElementById("fakeMessage").value)
+		}
 		async function sendShare_Gift() {
 			name = await liff.getProfile().then((profile) => {
 				return profile.displayName;
@@ -71,7 +89,7 @@
 							"action": {
 								"type": "uri",
 								"label": "action",
-								"uri": "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=text&text=" + encodeURIComponent(document.getElementById("fakeMessage").value)
+								"uri": returnUrl
 							},
 							"offsetTop": "none",
 							"offsetBottom": "none",
@@ -87,7 +105,7 @@
 							"action": {
 								"type": "uri",
 								"label": "action",
-								"uri": "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=text&text=" + encodeURIComponent(document.getElementById("fakeMessage").value)
+								"uri": returnUrl
 							},
 							"contents": [
 								{
@@ -100,7 +118,7 @@
 									"action": {
 										"type": "uri",
 										"label": "action",
-										"uri": "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=text&text=" + encodeURIComponent(document.getElementById("fakeMessage").value)
+										"uri": returnUrl
 									},
 									"offsetStart": "none",
 									"position": "relative",
@@ -123,7 +141,7 @@
 									"action": {
 										"type": "uri",
 										"label": "action",
-										"uri": "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=text&text=" + encodeURIComponent(document.getElementById("fakeMessage").value)
+										"uri": returnUrl
 									},
 									"position": "relative"
 								}
@@ -146,7 +164,7 @@
 									"action": {
 										"type": "uri",
 										"label": "打開我的禮物",
-										"uri": "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=text&text=" + encodeURIComponent(document.getElementById("fakeMessage").value)
+										"uri": returnUrl
 									},
 									"style": "secondary"
 								},
@@ -155,7 +173,7 @@
 									"action": {
 										"type": "uri",
 										"label": "傳送感謝小卡",
-										"uri": "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=text&text=" + encodeURIComponent(document.getElementById("fakeMessage").value)
+										"uri": returnUrl
 									}
 								},
 								{
@@ -170,7 +188,7 @@
 											"action": {
 												"type": "uri",
 												"label": "LINE禮物",
-												"uri": "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=text&text=" + encodeURIComponent(document.getElementById("fakeMessage").value)
+												"uri": returnUrl
 											},
 											"position": "relative",
 											"margin": "none",
@@ -184,7 +202,7 @@
 									"action": {
 										"type": "uri",
 										"label": "action",
-										"uri": "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=text&text=" + encodeURIComponent(document.getElementById("fakeMessage").value)
+										"uri": returnUrl
 									}
 								}
 							]
@@ -609,17 +627,13 @@
 
 		async function main() {
 			await liff.init({ liffId: "2004714738-5DPAlxA8" })
-			document.getElementById("btnShare").style.display = "block"
-				document.getElementById("btnShare2").style.display = "block"
-				document.getElementById("btnShare3").style.display = "block"
-				document.getElementById("btnShare4").style.display = "block"
-				document.getElementById("inputContainer").style.display = "flex"
 			if (liff.isLoggedIn()) {
 				document.getElementById("btnShare").style.display = "block"
 				document.getElementById("btnShare2").style.display = "block"
 				document.getElementById("btnShare3").style.display = "block"
 				document.getElementById("btnShare4").style.display = "block"
 				document.getElementById("inputContainer").style.display = "flex"
+				document.getElementById("inputContainer2").style.display = "flex"
 				if (!liff.isInClient()) {
 					document.getElementById("btnLogOut").style.display = "block"
 				}
