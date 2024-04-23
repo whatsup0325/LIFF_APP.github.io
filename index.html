@@ -64,6 +64,7 @@
 	<script>
 		
 		async function sendShare_Gift() {
+			let returnUrl = ""
 			if(document.getElementById("imageRadio").checked){
 				returnUrl = "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=image&downloadUrl="+document.getElementById("imgUrl").value+"&previewUrl="+document.getElementById("imgUrl").value
 			}else{
@@ -228,6 +229,7 @@
 		}
 
 		async function sendShare_Ladder() {
+			let returnUrl = ""
 			if(document.getElementById("imageRadio").checked){
 				returnUrl = "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=image&downloadUrl="+document.getElementById("imgUrl").value+"&previewUrl="+document.getElementById("imgUrl").value
 			}else{
@@ -357,6 +359,7 @@
 		}
 		
 		async function sendShare_Pay() {
+			let returnUrl = ""
 			if(document.getElementById("imageRadio").checked){
 				returnUrl = "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=image&downloadUrl="+document.getElementById("imgUrl").value+"&previewUrl="+document.getElementById("imgUrl").value
 			}else{
@@ -383,7 +386,7 @@
 							"aspectMode": "cover",
 							"action": {
 							  "type": "uri",
-							  "uri": "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=text&text=%E6%88%91%E8%B6%85%E7%AC%A8%20%E6%B4%BB%E8%A9%B2%E8%A2%AB%E9%A8%99"
+							  "uri": returnUrl
 							},
 							"position": "relative"
 						  },
@@ -399,7 +402,7 @@
 								"action": {
 								  "type": "uri",
 								  "label": "action",
-								  "uri": "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=text&text=%E6%88%91%E8%B6%85%E7%AC%A8%20%E6%B4%BB%E8%A9%B2%E8%A2%AB%E9%A8%99"
+								  "uri": returnUrl
 								}
 							  },
 							  {
@@ -424,7 +427,7 @@
 								"action": {
 								  "type": "uri",
 								  "label": "瞭解更多",
-								  "uri": "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=text&text=%E5%80%92%E6%AD%A4%E4%B8%80%E6%B2%B9"
+								  "uri": returnUrl
 								},
 								"scaling": true,
 								"offsetEnd": "none"
@@ -433,7 +436,7 @@
 							"action": {
 							  "type": "uri",
 							  "label": "action",
-							  "uri": "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=text&text=%E6%88%91%E8%B6%85%E7%AC%A8%20%E6%B4%BB%E8%A9%B2%E8%A2%AB%E9%A8%99"
+							  "uri": returnUrl
 							}
 						  },
 						  "footer": {
@@ -466,7 +469,7 @@
 							"action": {
 							  "type": "uri",
 							  "label": "action",
-							  "uri": "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=text&text=%E6%88%91%E8%B6%85%E7%AC%A8%20%E6%B4%BB%E8%A9%B2%E8%A2%AB%E9%A8%99"
+							  "uri": returnUrl
 							},
 							"position": "relative"
 						  },
@@ -495,6 +498,7 @@
 		}
 		
 		async function Red_Env() {
+			let returnUrl = ""
 			if(document.getElementById("imageRadio").checked){
 				returnUrl = "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=image&downloadUrl="+document.getElementById("imgUrl").value+"&previewUrl="+document.getElementById("imgUrl").value
 			}else{
@@ -522,7 +526,7 @@
 							"action": {
 							  "type": "uri",
 							  "label": "action",
-							  "uri": "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=text&text=%E6%8C%89%E7%9A%84%E9%BE%8D%E5%96%9C%E5%8C%97%E4%B8%83"
+							  "uri": returnUrl
 							}
 						  },
 						  "body": {
@@ -538,7 +542,7 @@
 								"action": {
 								  "type": "uri",
 								  "label": "action",
-								  "uri": "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=text&text=%E6%8C%89%E7%9A%84%E9%BE%8D%E5%96%9C%E5%8C%97%E4%B8%83"
+								  "uri": returnUrl
 								}
 							  },
 							  {
@@ -550,7 +554,7 @@
 								"action": {
 								  "type": "uri",
 								  "label": "action",
-								  "uri": "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=text&text=%E6%8C%89%E7%9A%84%E9%BE%8D%E5%96%9C%E5%8C%97%E4%B8%83"
+								  "uri": returnUrl
 								}
 							  }
 							]
@@ -569,7 +573,7 @@
 								"action": {
 								  "type": "uri",
 								  "label": "查看紅包狀態",
-								  "uri": "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=text&text=%E6%8C%89%E7%9A%84%E9%BE%8D%E5%96%9C%E5%8C%97%E4%B8%83"
+								  "uri": returnUrl
 								},
 								"margin": "none"
 							  },
