@@ -25,19 +25,24 @@
 </head>
 
 <body>
-	<button id="btnShare" onclick="sendShare_Gift()" style="display: none;margin: 20px auto;padding: 20px;">發送禮物</button>
-	<div style="display: flex; justify-content: center; align-items: center;    ">
-		禮物訊息:
-
-		<input id="fakeMessage" style="height: 30px; margin-left: 10px;"/>
+	<div id="inputContainer" style="display: none; justify-content: center; align-items: center;  gap:30px  ">
+		<div style="display: flex; justify-content: center; align-items: center;    ">
+			禮物訊息:
+	
+			<input id="fakeMessage" style=" height: 30px; margin-left: 10px;"/>
+		</div>
+		<div style="display: flex; justify-content: center; align-items: center;    ">
+			金額:
+	
+			<input id="linePayAmount" style=" height: 30px; margin-left: 10px;"/>
+		</div>
 	</div>
+	
+	<button id="btnShare" onclick="sendShare_Gift()" style="display: none;margin: 20px auto;padding: 20px;">發送禮物</button>
+	
 	<button id="btnShare2" onclick="sendShare_Ladder()" style="display: none;margin: 20px auto;padding: 20px;">爬梯子</button>
 	<button id="btnShare3" onclick="sendShare_Pay()" style="display: none;margin: 20px auto;padding: 20px;">LINE Pay</button>
-	<div style="display: flex; justify-content: center; align-items: center;    ">
-		金額:
-
-		<input id="linePayAmount" style="height: 30px; margin-left: 10px;"/>
-	</div>
+	
 	<button id="btnShare4" onclick="Red_Env()" style="display: none;margin: 20px auto;padding: 20px;">紅包</button>
 	<button id="btnLogin" onclick="liff.login()" style="display: none;margin: 20px auto;padding: 20px;">Log In</button>
 	<button id="btnLogOut" onclick="logOut()" style="display: none;margin: 20px auto;padding: 20px;">Log Out</button>
@@ -608,8 +613,7 @@
 				document.getElementById("btnShare2").style.display = "block"
 				document.getElementById("btnShare3").style.display = "block"
 				document.getElementById("btnShare4").style.display = "block"
-				document.getElementById("linePayAmount").style.display = "block"
-				document.getElementById("fakeMessage").style.display = "block"
+				document.getElementById("inputContainer").style.display = "flex"
 				if (!liff.isInClient()) {
 					document.getElementById("btnLogOut").style.display = "block"
 				}
