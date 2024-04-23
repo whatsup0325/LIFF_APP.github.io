@@ -11,7 +11,7 @@
 		button {
 			display: none;
 			width: 50%;
-			height: 10%;
+			height: 20%;
 			padding: 16px 0;
 			margin: auto 0;
 		}
@@ -19,12 +19,20 @@
 </head>
 
 <body>
-	<button id="btnShare" onclick="sendShare_Gift()" style="display: none;margin: 20px auto;padding: 20px;">Gift</button>
-	<input id="fakeMessage" style="display: none;margin: 20px auto;padding: 20px;"/>
-	<button id="btnShare2" onclick="sendShare_Ladder()" style="display: none;margin: 20px auto;padding: 20px;">Ladder</button>
-	<button id="btnShare3" onclick="sendShare_Pay()" style="display: none;margin: 20px auto;padding: 20px;">Pay</button>
-	<input id="linePayAmount" style="display: none;margin: 20px auto;padding: 20px;"/>
-	<button id="btnShare4" onclick="Red_Env()" style="display: none;margin: 20px auto;padding: 20px;">Red Env</button>
+	<button id="btnShare" onclick="sendShare_Gift()" style="display: none;margin: 20px auto;padding: 20px;">發送禮物</button>
+	<div style="display: flex; justify-content: center; align-items: center;    ">
+		禮物訊息:
+
+		<input id="fakeMessage" style="height: 30px; margin-left: 10px;"/>
+	</div>
+	<button id="btnShare2" onclick="sendShare_Ladder()" style="display: none;margin: 20px auto;padding: 20px;">爬梯子</button>
+	<button id="btnShare3" onclick="sendShare_Pay()" style="display: none;margin: 20px auto;padding: 20px;">LINE Pay</button>
+	<div style="display: flex; justify-content: center; align-items: center;    ">
+		金額:
+
+		<input id="linePayAmount" style="height: 30px; margin-left: 10px;"/>
+	</div>
+	<button id="btnShare4" onclick="Red_Env()" style="display: none;margin: 20px auto;padding: 20px;">紅包</button>
 	<button id="btnLogin" onclick="liff.login()" style="display: none;margin: 20px auto;padding: 20px;">Log In</button>
 	<button id="btnLogOut" onclick="logOut()" style="display: none;margin: 20px auto;padding: 20px;">Log Out</button>
 	<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
@@ -589,6 +597,12 @@
 
 		async function main() {
 			await liff.init({ liffId: "2004714738-5DPAlxA8" })
+			document.getElementById("btnShare").style.display = "block"
+			document.getElementById("btnShare2").style.display = "block"
+			document.getElementById("btnShare3").style.display = "block"
+			document.getElementById("btnShare4").style.display = "block"
+			document.getElementById("linePayAmount").style.display = "block"
+			document.getElementById("fakeMessage").style.display = "block"
 			if (liff.isLoggedIn()) {
 				document.getElementById("btnShare").style.display = "block"
 				document.getElementById("btnShare2").style.display = "block"
