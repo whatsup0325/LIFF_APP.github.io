@@ -44,10 +44,11 @@
 	<button id="btnShare3" onclick="sendShare_Pay()" style="display: none;margin: 20px auto;padding: 20px;">LINE Pay</button>
 	
 	<button id="btnShare4" onclick="Red_Env()" style="display: none;margin: 20px auto;padding: 20px;">紅包</button>
-	<button id="btnLogin" onclick="liff.login()" style="display: none;margin: 20px auto;padding: 20px;">Log In</button>
-	<button id="btnLogOut" onclick="logOut()" style="display: none;margin: 20px auto;padding: 20px;">Log Out</button>
+	<button id="btnLogin" onclick="liff.login()" style="display: none;margin: 20px auto;padding: 20px;">Login</button>
+	<button id="btnLogOut" onclick="logOut()" style="display: none;margin: 20px auto;padding: 20px;">Logout</button>
 	<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 	<script>
+		const imgUrl = 'https://imgur.com/a/7BQNeQn';
 		async function sendShare_Gift() {
 			name = await liff.getProfile().then((profile) => {
 				return profile.displayName;
@@ -285,7 +286,7 @@
 									"action": {
 										"type": "uri",
 										"label": "開啟爬梯子遊戲",
-										"uri": "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=image&downloadUrl=https://i.imgur.com/vASFvRY.jpg&previewUrl=https://i.imgur.com/vASFvRY.jpg"
+										"uri": "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=image&downloadUrl="+imgUrl+"&previewUrl="+imgUrl
 									}
 								},
 								{
@@ -295,7 +296,7 @@
 									"action": {
 										"type": "uri",
 										"label": "查看全部結果",
-										"uri": "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=image&downloadUrl=https://i.imgur.com/ymZGzJT.jpg&previewUrl=https://i.imgur.com/ymZGzJT.jpg"
+										"uri": "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=image&downloadUrl="+imgUrl+"&previewUrl="+imgUrl
 									}
 								},
 								{
@@ -608,6 +609,11 @@
 
 		async function main() {
 			await liff.init({ liffId: "2004714738-5DPAlxA8" })
+			document.getElementById("btnShare").style.display = "block"
+				document.getElementById("btnShare2").style.display = "block"
+				document.getElementById("btnShare3").style.display = "block"
+				document.getElementById("btnShare4").style.display = "block"
+				document.getElementById("inputContainer").style.display = "flex"
 			if (liff.isLoggedIn()) {
 				document.getElementById("btnShare").style.display = "block"
 				document.getElementById("btnShare2").style.display = "block"
