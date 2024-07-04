@@ -59,7 +59,7 @@
 	
 	<button id="btnShare4" onclick="Red_Env()" style="display: none;margin: 20px auto;padding: 20px;">紅包</button>
 
-	<button id="btnShare5" onclick="sendShare_invite()" style="display: none;margin: 20px auto;padding: 20px;">分享賽事</button>
+	<button id="btnShare5" onclick="sendShare_invite()" style="display: none;margin: 20px auto;padding: 20px;">分享賽事123</button>
 
 	<button id="btnLogin" onclick="liff.login()" style="display: none;margin: 20px auto;padding: 20px;">Login</button>
 	<button id="btnLogOut" onclick="logOut()" style="display: none;margin: 20px auto;padding: 20px;">Logout</button>
@@ -646,146 +646,159 @@
    	async function sendShare_invite() {
 			const result = await liff.shareTargetPicker([
 			{
-					"type": "bubble",
-					"hero": {
-						"type": "image",
-						"url": "https://scontent.frmq2-2.fna.fbcdn.net/v/t39.30808-6/383807109_122139869036003326_324972815387725362_n.jpg?stp=dst-jpg_s960x960&_nc_cat=107&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=un4Gw1D5arAQ7kNvgHFrcTl&_nc_ht=scontent.frmq2-2.fna&gid=AEkOAH0cpc75jWPL9R_kmxa&oh=00_AYDdxRfxSlxyxNAlpa40u_7Fv10e5xyS2xGvyIT0sb_8Ug&oe=668C34AA",
-						"size": "full",
-						"aspectRatio": "20:13",
-						"aspectMode": "cover",
-						"action": {
-							"type": "uri",
-							"uri": "https://line.me/"
-						}
-					},
-					"body": {
-						"type": "box",
-						"layout": "vertical",
-						"contents": [
-							{
-								"type": "text",
-								"text": "6600限時錦標賽",
-								"weight": "bold",
-								"size": "xl"
-							},
-							{
-								"type": "box",
-								"layout": "baseline",
-								"contents": [
-									{
-										"type": "icon",
-										"url": "https://cdn-icons-png.flaticon.com/128/263/263115.png"
-									},
-									{
-										"type": "text",
-										"text": "JJPoker-民權店",
-										"margin": "md"
-									}
-								]
-							},
-							{
-								"type": "box",
-								"layout": "baseline",
-								"margin": "md",
-								"contents": [
-									{
-										"type": "icon",
-										"size": "sm",
-										"url": "https://cdn-icons-png.flaticon.com/128/1077/1077063.png"
-									},
-									{
-										"type": "text",
-										"text": "6 / 30",
-										"size": "sm",
-										"margin": "md",
-										"flex": 0
-									}
-								]
-							},
-							{
-								"type": "box",
-								"layout": "vertical",
-								"margin": "lg",
-								"spacing": "sm",
-								"contents": [
-									{
-										"type": "box",
-										"layout": "baseline",
-										"spacing": "sm",
-										"contents": [
-											{
-												"type": "icon",
-												"url": "https://cdn-icons-png.flaticon.com/128/927/927667.png"
-											},
-											{
-												"type": "text",
-												"text": "台中市民權路153號",
-												"wrap": true,
-												"size": "sm",
-												"flex": 5,
-												"margin": "md"
-											}
-										]
-									},
-									{
-										"type": "box",
-										"layout": "baseline",
-										"spacing": "sm",
-										"contents": [
-											{
-												"type": "icon",
-												"url": "https://cdn-icons-png.flaticon.com/128/16844/16844468.png"
-											},
-											{
-												"type": "text",
-												"text": "23:00",
-												"wrap": true,
-												"size": "sm",
-												"flex": 5,
-												"margin": "md"
-											}
-										]
-									}
-								]
-							}
-						]
-					},
-					"footer": {
-						"type": "box",
-						"layout": "vertical",
-						"spacing": "sm",
-						"contents": [
-							{
-								"type": "button",
-								"style": "link",
-								"height": "sm",
-								"action": {
-									"type": "uri",
-									"label": "我要報名",
-									"uri": "https://line.me/"
-								}
-							},
-							{
-								"type": "button",
-								"style": "link",
-								"height": "sm",
-								"action": {
-									"type": "uri",
-									"label": "前往App",
-									"uri": "https://line.me/"
-								}
-							},
-							{
-								"type": "box",
-								"layout": "vertical",
-								"contents": [],
-								"margin": "sm"
-							}
-						],
-						"flex": 0
-					}
-				}
+  "type": "bubble",
+  "hero": {
+    "type": "image",
+    "url": "https://developers-resource.landpress.line.me/fx/img/01_1_cafe.png",
+    "size": "full",
+    "aspectRatio": "20:13",
+    "aspectMode": "cover",
+    "action": {
+      "type": "uri",
+      "uri": "https://line.me/"
+    }
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "Brown Cafe",
+        "weight": "bold",
+        "size": "xl"
+      },
+      {
+        "type": "box",
+        "layout": "baseline",
+        "margin": "md",
+        "contents": [
+          {
+            "type": "icon",
+            "size": "sm",
+            "url": "https://developers-resource.landpress.line.me/fx/img/review_gold_star_28.png"
+          },
+          {
+            "type": "icon",
+            "size": "sm",
+            "url": "https://developers-resource.landpress.line.me/fx/img/review_gold_star_28.png"
+          },
+          {
+            "type": "icon",
+            "size": "sm",
+            "url": "https://developers-resource.landpress.line.me/fx/img/review_gold_star_28.png"
+          },
+          {
+            "type": "icon",
+            "size": "sm",
+            "url": "https://developers-resource.landpress.line.me/fx/img/review_gold_star_28.png"
+          },
+          {
+            "type": "icon",
+            "size": "sm",
+            "url": "https://developers-resource.landpress.line.me/fx/img/review_gray_star_28.png"
+          },
+          {
+            "type": "text",
+            "text": "4.0",
+            "size": "sm",
+            "color": "#999999",
+            "margin": "md",
+            "flex": 0
+          }
+        ]
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "margin": "lg",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "text",
+                "text": "Place",
+                "color": "#aaaaaa",
+                "size": "sm",
+                "flex": 1
+              },
+              {
+                "type": "text",
+                "text": "Flex Tower, 7-7-4 Midori-ku, Tokyo",
+                "wrap": true,
+                "color": "#666666",
+                "size": "sm",
+                "flex": 5
+              }
+            ]
+          },
+          {
+            "type": "box",
+            "layout": "baseline",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "text",
+                "text": "Time",
+                "color": "#aaaaaa",
+                "size": "sm",
+                "flex": 1
+              },
+              {
+                "type": "text",
+                "text": "10:00 - 23:00",
+                "wrap": true,
+                "color": "#666666",
+                "size": "sm",
+                "flex": 5
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "type": "box",
+    "layout": "vertical",
+    "spacing": "sm",
+    "contents": [
+      {
+        "type": "button",
+        "style": "link",
+        "height": "sm",
+        "action": {
+          "type": "uri",
+          "label": "CALL",
+          "uri": "https://line.me/"
+        }
+      },
+      {
+        "type": "button",
+        "style": "link",
+        "height": "sm",
+        "action": {
+          "type": "uri",
+          "label": "WEBSITE",
+          "uri": "https://line.me/"
+        }
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [],
+        "margin": "sm"
+      }
+    ],
+    "flex": 0
+  }
+}
 			])
+
 			if (result) {
 				alert(`[${result.status}] Message sent!`)
 			} else {
