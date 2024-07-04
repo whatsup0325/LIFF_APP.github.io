@@ -58,11 +58,14 @@
 	<button id="btnShare3" onclick="sendShare_Pay()" style="display: none;margin: 20px auto;padding: 20px;">LINE Pay</button>
 	
 	<button id="btnShare4" onclick="Red_Env()" style="display: none;margin: 20px auto;padding: 20px;">紅包</button>
+
+	<button id="btnShare5" onclick="sendShare_invite()" style="display: none;margin: 20px auto;padding: 20px;">分享賽事</button>
+
 	<button id="btnLogin" onclick="liff.login()" style="display: none;margin: 20px auto;padding: 20px;">Login</button>
 	<button id="btnLogOut" onclick="logOut()" style="display: none;margin: 20px auto;padding: 20px;">Logout</button>
 	<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 	<script>
-		console.log("https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=image&downloadUrl="+document.getElementById("imgUrl").value+"&previewUrl="+document.getElementById("imgUrl").value)
+		
 		async function sendShare_Gift() {
 			let returnUrl = ""
 			if(document.getElementById("imageRadio").checked){
@@ -640,6 +643,164 @@
 			}
 		}
 		
+   	async function sendShare_invite() {
+			const result = await liff.shareTargetPicker([
+			{
+					"type": "bubble",
+					"hero": {
+						"type": "image",
+						"url": "https://scontent.frmq2-2.fna.fbcdn.net/v/t39.30808-6/383807109_122139869036003326_324972815387725362_n.jpg?stp=dst-jpg_s960x960&_nc_cat=107&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=un4Gw1D5arAQ7kNvgHFrcTl&_nc_ht=scontent.frmq2-2.fna&gid=AEkOAH0cpc75jWPL9R_kmxa&oh=00_AYDdxRfxSlxyxNAlpa40u_7Fv10e5xyS2xGvyIT0sb_8Ug&oe=668C34AA",
+						"size": "full",
+						"aspectRatio": "20:13",
+						"aspectMode": "cover",
+						"action": {
+							"type": "uri",
+							"uri": "https://line.me/"
+						}
+					},
+					"body": {
+						"type": "box",
+						"layout": "vertical",
+						"contents": [
+							{
+								"type": "text",
+								"text": "6600限時錦標賽",
+								"weight": "bold",
+								"size": "xl"
+							},
+							{
+								"type": "box",
+								"layout": "baseline",
+								"contents": [
+									{
+										"type": "icon",
+										"url": "https://cdn-icons-png.flaticon.com/128/263/263115.png"
+									},
+									{
+										"type": "text",
+										"text": "JJPoker-民權店",
+										"margin": "md"
+									}
+								]
+							},
+							{
+								"type": "box",
+								"layout": "baseline",
+								"margin": "md",
+								"contents": [
+									{
+										"type": "icon",
+										"size": "sm",
+										"url": "https://cdn-icons-png.flaticon.com/128/1077/1077063.png"
+									},
+									{
+										"type": "text",
+										"text": "6 / 30",
+										"size": "sm",
+										"margin": "md",
+										"flex": 0
+									}
+								]
+							},
+							{
+								"type": "box",
+								"layout": "vertical",
+								"margin": "lg",
+								"spacing": "sm",
+								"contents": [
+									{
+										"type": "box",
+										"layout": "baseline",
+										"spacing": "sm",
+										"contents": [
+											{
+												"type": "icon",
+												"url": "https://cdn-icons-png.flaticon.com/128/927/927667.png"
+											},
+											{
+												"type": "text",
+												"text": "台中市民權路153號",
+												"wrap": true,
+												"size": "sm",
+												"flex": 5,
+												"margin": "md"
+											}
+										]
+									},
+									{
+										"type": "box",
+										"layout": "baseline",
+										"spacing": "sm",
+										"contents": [
+											{
+												"type": "icon",
+												"url": "https://cdn-icons-png.flaticon.com/128/16844/16844468.png"
+											},
+											{
+												"type": "text",
+												"text": "23:00",
+												"wrap": true,
+												"size": "sm",
+												"flex": 5,
+												"margin": "md"
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					"footer": {
+						"type": "box",
+						"layout": "vertical",
+						"spacing": "sm",
+						"contents": [
+							{
+								"type": "button",
+								"style": "link",
+								"height": "sm",
+								"action": {
+									"type": "uri",
+									"label": "我要報名",
+									"uri": "https://line.me/"
+								}
+							},
+							{
+								"type": "button",
+								"style": "link",
+								"height": "sm",
+								"action": {
+									"type": "uri",
+									"label": "前往App",
+									"uri": "https://line.me/"
+								}
+							},
+							{
+								"type": "box",
+								"layout": "vertical",
+								"contents": [],
+								"margin": "sm"
+							}
+						],
+						"flex": 0
+					}
+				}
+			])
+			if (result) {
+				alert(`[${result.status}] Message sent!`)
+			} else {
+				const [majorVer, minorVer, patchVer] = (liff.getLineVersion() || "").split('.');
+
+				if (minorVer === undefined) {
+					alert('ShareTargetPicker was canceled in external browser')
+					return
+				}
+
+				if (parseInt(majorVer) >= 10 && parseInt(minorVer) >= 10 && parseInt(patchVer) > 0) {
+					alert('ShareTargetPicker was canceled in LINE app')
+				}
+			}
+		}
 
 		function logOut() {
 			liff.logout()
@@ -653,6 +814,7 @@
 				document.getElementById("btnShare2").style.display = "block"
 				document.getElementById("btnShare3").style.display = "block"
 				document.getElementById("btnShare4").style.display = "block"
+				document.getElementById("btnShare5").style.display = "block"
 				document.getElementById("inputContainer").style.display = "flex"
 				document.getElementById("inputContainer2").style.display = "flex"
 				if (!liff.isInClient()) {
