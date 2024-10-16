@@ -796,7 +796,7 @@
                 aspectMode: "cover",
                 action: {
                   type: "uri",
-                  uri: "https://www.jjpoker.com.tw",
+                  uri: "https://line.me/",
                 },
               },
               body: {
@@ -903,9 +903,10 @@
                     style: "link",
                     height: "sm",
                     action: {
-                      type: "message",
-                      label: "立即報名",
-                      text: "加1",
+                      type: "postback",
+                      label: "報名參加",
+                      data: "hello",
+                      displayText: "+1",
                     },
                   },
                   {
@@ -914,7 +915,7 @@
                     height: "sm",
                     action: {
                       type: "uri",
-                      label: "前往註冊",
+                      label: "會員註冊",
                       uri: "https://www.jjpoker.com.tw/Registered",
                     },
                   },
