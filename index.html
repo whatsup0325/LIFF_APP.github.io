@@ -1,982 +1,935 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover"
-    />
-    <title>LIFF App</title>
-    <style>
-      button {
-        display: none;
-        width: 50%;
-        height: 20%;
-        padding: 16px 0;
-        margin: auto 0;
 
-        background-color: #294060;
-        color: #ffffff;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-      }
-    </style>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+    content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover" />
+  <title>LIFF App</title>
+  <style>
+    button {
+      display: none;
+      width: 50%;
+      height: 20%;
+      padding: 16px 0;
+      margin: auto 0;
 
-  <body>
-    <div
-      id="inputContainer"
-      style="
+      background-color: #294060;
+      color: #ffffff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="inputContainer" style="
         display: none;
         justify-content: center;
         align-items: center;
         flex-direction: column;
         gap: 10px;
-      "
-    >
-      <div style="display: flex; justify-content: center; align-items: center">
-        禮物訊息:
+      ">
+    <div style="display: flex; justify-content: center; align-items: center">
+      禮物訊息:
 
-        <input
-          id="fakeMessage"
-          value="我欠你100萬"
-          style="height: 30px; margin-left: 10px"
-        />
-      </div>
-      <div style="display: flex; justify-content: center; align-items: center">
-        圖片網址:
-
-        <input
-          id="imgUrl"
-          value="https://i.imgur.com/8PfHQR6.gif"
-          style="height: 30px; margin-left: 10px"
-        />
-      </div>
-      <div style="display: flex; justify-content: center; align-items: center">
-        顯示金額:
-
-        <input
-          id="linePayAmount"
-          value="520"
-          style="height: 30px; margin-left: 10px"
-        />
-      </div>
+      <input id="fakeMessage" value="我欠你100萬" style="height: 30px; margin-left: 10px" />
     </div>
-    <div
-      id="inputContainer2"
-      style="
+    <div style="display: flex; justify-content: center; align-items: center">
+      圖片網址:
+
+      <input id="imgUrl" value="https://i.imgur.com/8PfHQR6.gif" style="height: 30px; margin-left: 10px" />
+    </div>
+    <div style="display: flex; justify-content: center; align-items: center">
+      顯示金額:
+
+      <input id="linePayAmount" value="520" style="height: 30px; margin-left: 10px" />
+    </div>
+  </div>
+  <div id="inputContainer2" style="
         display: none;
         justify-content: center;
         align-items: center;
         gap: 30px;
         margin-top: 20px;
-      "
-    >
-      <div>
-        <label for="huey">回傳方式:</label>
-        <input type="radio" id="textRadio" name="use" value="text" checked />
-        <label for="textRadio">文字</label>
-        <input type="radio" id="imageRadio" name="use" value="image" />
-        <label for="imageRadio">圖片</label>
-      </div>
+      ">
+    <div>
+      <label for="huey">回傳方式:</label>
+      <input type="radio" id="textRadio" name="use" value="text" checked />
+      <label for="textRadio">文字</label>
+      <input type="radio" id="imageRadio" name="use" value="image" />
+      <label for="imageRadio">圖片</label>
     </div>
-    <button
-      id="btnShare"
-      onclick="sendShare_Gift()"
-      style="display: none; margin: 20px auto; padding: 20px"
-    >
-      發送禮物
-    </button>
+  </div>
+  <button id="btnShare" onclick="sendShare_Gift()" style="display: none; margin: 20px auto; padding: 20px">
+    發送禮物
+  </button>
 
-    <button
-      id="btnShare2"
-      onclick="sendShare_Ladder()"
-      style="display: none; margin: 20px auto; padding: 20px"
-    >
-      爬梯子
-    </button>
-    <button
-      id="btnShare3"
-      onclick="sendShare_Pay()"
-      style="display: none; margin: 20px auto; padding: 20px"
-    >
-      LINE Pay
-    </button>
+  <button id="btnShare2" onclick="sendShare_Ladder()" style="display: none; margin: 20px auto; padding: 20px">
+    爬梯子
+  </button>
+  <button id="btnShare3" onclick="sendShare_Pay()" style="display: none; margin: 20px auto; padding: 20px">
+    LINE Pay
+  </button>
 
-    <button
-      id="btnShare4"
-      onclick="Red_Env()"
-      style="display: none; margin: 20px auto; padding: 20px"
-    >
-      紅包
-    </button>
+  <button id="btnShare4" onclick="Red_Env()" style="display: none; margin: 20px auto; padding: 20px">
+    紅包
+  </button>
 
-    <button
-      id="btnShare5"
-      onclick="sendShare_invite()"
-      style="display: none; margin: 20px auto; padding: 20px"
-    >
-      分享賽事1
-    </button>
+  <button id="btnShare5" onclick="sendShare_invite()" style="display: none; margin: 20px auto; padding: 20px">
+    分享賽事1
+  </button>
 
-    <button
-      id="btnLogin"
-      onclick="liff.login()"
-      style="display: none; margin: 20px auto; padding: 20px"
-    >
-      Login
-    </button>
-    <button
-      id="btnLogOut"
-      onclick="logOut()"
-      style="display: none; margin: 20px auto; padding: 20px"
-    >
-      Logout
-    </button>
-    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
-    <script>
-      async function sendShare_Gift() {
-        let returnUrl = "";
-        if (document.getElementById("imageRadio").checked) {
-          returnUrl =
-            "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=image&downloadUrl=" +
-            document.getElementById("imgUrl").value +
-            "&previewUrl=" +
-            document.getElementById("imgUrl").value;
-        } else {
-          returnUrl =
-            "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=text&text=" +
-            encodeURIComponent(document.getElementById("fakeMessage").value);
+  <button id="btnLogin" onclick="liff.login()" style="display: none; margin: 20px auto; padding: 20px">
+    Login
+  </button>
+  <button id="btnLogOut" onclick="logOut()" style="display: none; margin: 20px auto; padding: 20px">
+    Logout
+  </button>
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+  <script>
+    async function sendShare_Gift() {
+      let returnUrl = "";
+      if (document.getElementById("imageRadio").checked) {
+        returnUrl =
+          "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=image&downloadUrl=" +
+          document.getElementById("imgUrl").value +
+          "&previewUrl=" +
+          document.getElementById("imgUrl").value;
+      } else {
+        returnUrl =
+          "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=text&text=" +
+          encodeURIComponent(document.getElementById("fakeMessage").value);
+      }
+      name = await liff
+        .getProfile()
+        .then((profile) => {
+          return profile.displayName;
+        })
+        .catch((err) => {
+          return err;
+        });
+
+      const result = await liff.shareTargetPicker([
+        {
+          type: "flex",
+          altText: name + "送禮物來囉!",
+          contents: {
+            type: "bubble",
+            size: "kilo",
+            hero: {
+              type: "image",
+              url: "https://img.onl/olwxWE",
+              size: "full",
+              aspectRatio: "18:19",
+              action: {
+                type: "uri",
+                label: "action",
+                uri: returnUrl,
+              },
+              offsetTop: "none",
+              offsetBottom: "none",
+              offsetStart: "none",
+              margin: "none",
+              align: "center",
+              aspectMode: "cover",
+            },
+            body: {
+              type: "box",
+              layout: "horizontal",
+              spacing: "none",
+              action: {
+                type: "uri",
+                label: "action",
+                uri: returnUrl,
+              },
+              contents: [
+                {
+                  type: "image",
+                  url: "https://img.onl/pNQsvU",
+                  align: "start",
+                  size: "md",
+                  offsetTop: "none",
+                  offsetBottom: "none",
+                  action: {
+                    type: "uri",
+                    label: "action",
+                    uri: returnUrl,
+                  },
+                  offsetStart: "none",
+                  position: "relative",
+                  offsetEnd: "none",
+                },
+                {
+                  type: "text",
+                  text: "【星巴克】大杯芝麻杏仁豆腐星冰樂即享券",
+                  size: "md",
+                  weight: "bold",
+                  margin: "none",
+                  align: "start",
+                  offsetTop: "xxl",
+                  contents: [],
+                  style: "normal",
+                  offsetEnd: "none",
+                  wrap: true,
+                  offsetBottom: "none",
+                  offsetStart: "none",
+                  action: {
+                    type: "uri",
+                    label: "action",
+                    uri: returnUrl,
+                  },
+                  position: "relative",
+                },
+              ],
+              margin: "none",
+              offsetTop: "none",
+              position: "relative",
+              offsetStart: "none",
+              offsetEnd: "none",
+              offsetBottom: "none",
+            },
+            footer: {
+              type: "box",
+              layout: "vertical",
+              contents: [
+                {
+                  type: "button",
+                  color: "#EEE9E9",
+                  margin: "none",
+                  action: {
+                    type: "uri",
+                    label: "打開我的禮物",
+                    uri: returnUrl,
+                  },
+                  style: "secondary",
+                },
+                {
+                  type: "button",
+                  action: {
+                    type: "uri",
+                    label: "傳送感謝小卡",
+                    uri: returnUrl,
+                  },
+                },
+                {
+                  type: "separator",
+                },
+                {
+                  type: "box",
+                  layout: "vertical",
+                  contents: [
+                    {
+                      type: "button",
+                      action: {
+                        type: "uri",
+                        label: "LINE禮物",
+                        uri: returnUrl,
+                      },
+                      position: "relative",
+                      margin: "none",
+                      height: "sm",
+                      style: "link",
+                      offsetTop: "none",
+                      offsetStart: "none",
+                      offsetEnd: "none",
+                    },
+                  ],
+                  action: {
+                    type: "uri",
+                    label: "action",
+                    uri: returnUrl,
+                  },
+                },
+              ],
+            },
+          },
+        },
+      ]);
+      if (result) {
+        alert(`[${result.status}] Message sent!`);
+      } else {
+        const [majorVer, minorVer, patchVer] = (
+          liff.getLineVersion() || ""
+        ).split(".");
+
+        if (minorVer === undefined) {
+          alert("ShareTargetPicker was canceled in external browser");
+          return;
         }
-        name = await liff
-          .getProfile()
-          .then((profile) => {
-            return profile.displayName;
-          })
-          .catch((err) => {
-            return err;
-          });
 
-        const result = await liff.shareTargetPicker([
-          {
-            type: "flex",
-            altText: name + "送禮物來囉!",
-            contents: {
-              type: "bubble",
-              size: "kilo",
-              hero: {
-                type: "image",
-                url: "https://img.onl/olwxWE",
-                size: "full",
-                aspectRatio: "18:19",
-                action: {
-                  type: "uri",
-                  label: "action",
-                  uri: returnUrl,
-                },
-                offsetTop: "none",
-                offsetBottom: "none",
-                offsetStart: "none",
-                margin: "none",
-                align: "center",
-                aspectMode: "cover",
+        if (
+          parseInt(majorVer) >= 10 &&
+          parseInt(minorVer) >= 10 &&
+          parseInt(patchVer) > 0
+        ) {
+          alert("ShareTargetPicker was canceled in LINE app");
+        }
+      }
+    }
+
+    async function sendShare_Ladder() {
+      let returnUrl = "";
+      if (document.getElementById("imageRadio").checked) {
+        returnUrl =
+          "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=image&downloadUrl=" +
+          document.getElementById("imgUrl").value +
+          "&previewUrl=" +
+          document.getElementById("imgUrl").value;
+      } else {
+        returnUrl =
+          "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=text&text=" +
+          encodeURIComponent(document.getElementById("fakeMessage").value);
+      }
+      name = await liff
+        .getProfile()
+        .then((profile) => {
+          return profile.displayName;
+        })
+        .catch((err) => {
+          return err;
+        });
+
+      const result = await liff.shareTargetPicker([
+        {
+          type: "flex",
+          altText: "爬梯子遊戲已建立，讓梯子決定您的命運吧！",
+          contents: {
+            type: "bubble",
+            size: "kilo",
+            hero: {
+              type: "image",
+              url: "https://img.onl/qCFiCL",
+              size: "full",
+              aspectRatio: "20:13",
+              aspectMode: "cover",
+              action: {
+                type: "uri",
+                uri: returnUrl,
               },
-              body: {
-                type: "box",
-                layout: "horizontal",
-                spacing: "none",
-                action: {
-                  type: "uri",
-                  label: "action",
-                  uri: returnUrl,
+            },
+            body: {
+              type: "box",
+              layout: "vertical",
+              contents: [
+                {
+                  type: "text",
+                  text: "爬梯子",
+                  weight: "bold",
+                  size: "md",
                 },
-                contents: [
-                  {
-                    type: "image",
-                    url: "https://img.onl/pNQsvU",
-                    align: "start",
-                    size: "md",
-                    offsetTop: "none",
-                    offsetBottom: "none",
-                    action: {
-                      type: "uri",
-                      label: "action",
-                      uri: returnUrl,
+                {
+                  type: "box",
+                  layout: "vertical",
+                  margin: "md",
+                  spacing: "sm",
+                  contents: [
+                    {
+                      type: "text",
+                      text: "我建立了一個爬梯子遊戲，馬上來看看結果吧！",
+                      wrap: true,
+                      color: "#666666",
+                      size: "sm",
+                      offsetEnd: "none",
+                      offsetStart: "none",
+                      offsetBottom: "none",
+                      offsetTop: "none",
+                      flex: 5,
                     },
-                    offsetStart: "none",
-                    position: "relative",
-                    offsetEnd: "none",
-                  },
-                  {
-                    type: "text",
-                    text: "【星巴克】大杯芝麻杏仁豆腐星冰樂即享券",
-                    size: "md",
-                    weight: "bold",
-                    margin: "none",
-                    align: "start",
-                    offsetTop: "xxl",
-                    contents: [],
-                    style: "normal",
-                    offsetEnd: "none",
-                    wrap: true,
-                    offsetBottom: "none",
-                    offsetStart: "none",
-                    action: {
-                      type: "uri",
-                      label: "action",
-                      uri: returnUrl,
-                    },
-                    position: "relative",
-                  },
-                ],
-                margin: "none",
-                offsetTop: "none",
-                position: "relative",
-                offsetStart: "none",
-                offsetEnd: "none",
-                offsetBottom: "none",
+                  ],
+                },
+              ],
+              action: {
+                type: "uri",
+                label: "action",
+                uri: returnUrl,
               },
+            },
+            footer: {
+              type: "box",
+              layout: "vertical",
+              spacing: "sm",
+              contents: [
+                {
+                  type: "separator",
+                  margin: "none",
+                },
+                {
+                  type: "button",
+                  style: "link",
+                  height: "sm",
+                  action: {
+                    type: "uri",
+                    label: "開啟爬梯子遊戲",
+                    uri: returnUrl,
+                  },
+                },
+                {
+                  type: "button",
+                  style: "link",
+                  height: "sm",
+                  action: {
+                    type: "uri",
+                    label: "查看全部結果",
+                    uri: returnUrl,
+                  },
+                },
+                {
+                  type: "separator",
+                },
+                {
+                  type: "box",
+                  layout: "vertical",
+                  contents: [],
+                  margin: "sm",
+                },
+              ],
+              flex: 0,
+              margin: "none",
+              paddingTop: "none",
+            },
+          },
+        },
+      ]);
+      if (result) {
+        alert(`[${result.status}] Message sent!`);
+      } else {
+        const [majorVer, minorVer, patchVer] = (
+          liff.getLineVersion() || ""
+        ).split(".");
+
+        if (minorVer === undefined) {
+          alert("ShareTargetPicker was canceled in external browser");
+          return;
+        }
+
+        if (
+          parseInt(majorVer) >= 10 &&
+          parseInt(minorVer) >= 10 &&
+          parseInt(patchVer) > 0
+        ) {
+          alert("ShareTargetPicker was canceled in LINE app");
+        }
+      }
+    }
+
+    async function sendShare_Pay() {
+      let returnUrl = "";
+      if (document.getElementById("imageRadio").checked) {
+        returnUrl =
+          "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=image&downloadUrl=" +
+          document.getElementById("imgUrl").value +
+          "&previewUrl=" +
+          document.getElementById("imgUrl").value;
+      } else {
+        returnUrl =
+          "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=text&text=" +
+          encodeURIComponent(document.getElementById("fakeMessage").value);
+      }
+
+      name = await liff
+        .getProfile()
+        .then((profile) => {
+          return profile.displayName;
+        })
+        .catch((err) => {
+          return err;
+        });
+      const result = await liff.shareTargetPicker([
+        {
+          type: "flex",
+          altText:
+            "已收到NT$ " +
+            document.getElementById("linePayAmount").value +
+            "的轉帳。",
+          contents: {
+            type: "bubble",
+            size: "hecto",
+            hero: {
+              type: "image",
+              url: "https://i.imgur.com/j5VkCxE.png",
+              size: "full",
+              aspectRatio: "20:13",
+              aspectMode: "cover",
+              action: {
+                type: "uri",
+                uri: returnUrl,
+              },
+              position: "relative",
+            },
+            body: {
+              type: "box",
+              layout: "vertical",
+              contents: [
+                {
+                  type: "text",
+                  text: "LINE Pay",
+                  weight: "bold",
+                  size: "xs",
+                  action: {
+                    type: "uri",
+                    label: "action",
+                    uri: returnUrl,
+                  },
+                },
+                {
+                  type: "text",
+                  text:
+                    "您已收到 NT$ " +
+                    document.getElementById("linePayAmount").value +
+                    "。（來自：" +
+                    name +
+                    "）",
+                  size: "xs",
+                  contents: [],
+                  color: "#8E8E8E",
+                  action: {
+                    type: "uri",
+                    label: "action",
+                    uri: "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=image&downloadUrl=https://i.imgur.com/ait6uEi.jpg&previewUrl=https://i.imgur.com/ait6uEi.jpg",
+                  },
+                },
+                {
+                  type: "button",
+                  position: "relative",
+                  style: "secondary",
+                  height: "sm",
+                  margin: "lg",
+                  color: "#F0F0F0",
+                  action: {
+                    type: "uri",
+                    label: "瞭解更多",
+                    uri: returnUrl,
+                  },
+                  scaling: true,
+                  offsetEnd: "none",
+                },
+              ],
+              action: {
+                type: "uri",
+                label: "action",
+                uri: returnUrl,
+              },
+            },
+            footer: {
+              type: "box",
+              layout: "baseline",
+              contents: [
+                {
+                  type: "icon",
+                  url: "https://i.imgur.com/LriSrg0.png",
+                  margin: "none",
+                  size: "xs",
+                  scaling: true,
+                  offsetTop: "xs",
+                },
+                {
+                  type: "text",
+                  text: "LINE Pay",
+                  margin: "sm",
+                  size: "xxs",
+                  color: "#8E8E8E",
+                },
+                {
+                  type: "icon",
+                  url: "https://i.imgur.com/aKbXQ9D.png",
+                  margin: "sm",
+                  size: "xxs",
+                  offsetTop: "xs",
+                },
+              ],
+              action: {
+                type: "uri",
+                label: "action",
+                uri: returnUrl,
+              },
+              position: "relative",
+            },
+            styles: {
               footer: {
-                type: "box",
-                layout: "vertical",
-                contents: [
-                  {
-                    type: "button",
-                    color: "#EEE9E9",
-                    margin: "none",
-                    action: {
-                      type: "uri",
-                      label: "打開我的禮物",
-                      uri: returnUrl,
+                separator: true,
+              },
+            },
+          },
+        },
+      ]);
+      if (result) {
+        alert(`[${result.status}] Message sent!`);
+      } else {
+        const [majorVer, minorVer, patchVer] = (
+          liff.getLineVersion() || ""
+        ).split(".");
+
+        if (minorVer === undefined) {
+          alert("ShareTargetPicker was canceled in external browser");
+          return;
+        }
+
+        if (
+          parseInt(majorVer) >= 10 &&
+          parseInt(minorVer) >= 10 &&
+          parseInt(patchVer) > 0
+        ) {
+          alert("ShareTargetPicker was canceled in LINE app");
+        }
+      }
+    }
+
+    async function Red_Env() {
+      let returnUrl = "";
+      if (document.getElementById("imageRadio").checked) {
+        returnUrl =
+          "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=image&downloadUrl=" +
+          document.getElementById("imgUrl").value +
+          "&previewUrl=" +
+          document.getElementById("imgUrl").value;
+      } else {
+        returnUrl =
+          "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=text&text=" +
+          encodeURIComponent(document.getElementById("fakeMessage").value);
+      }
+      name = await liff
+        .getProfile()
+        .then((profile) => {
+          return profile.displayName;
+        })
+        .catch((err) => {
+          return err;
+        });
+
+      const result = await liff.shareTargetPicker([
+        {
+          type: "flex",
+          altText: "您收到一則紅包訊息！",
+          contents: {
+            type: "bubble",
+            size: "kilo",
+            hero: {
+              type: "image",
+              url: "https://i.imgur.com/2Fbb9wM.png",
+              size: "full",
+              aspectRatio: "20:13",
+              aspectMode: "cover",
+              action: {
+                type: "uri",
+                label: "action",
+                uri: returnUrl,
+              },
+            },
+            body: {
+              type: "box",
+              layout: "vertical",
+              contents: [
+                {
+                  type: "text",
+                  text: "LINE Pay 紅包",
+                  weight: "bold",
+                  size: "sm",
+                  color: "#000000",
+                  action: {
+                    type: "uri",
+                    label: "action",
+                    uri: returnUrl,
+                  },
+                },
+                {
+                  type: "text",
+                  text:
+                    name +
+                    "發紅包了，限時3天！快來試試手氣！(紅包將在3天後過期並退還給好友。)",
+                  size: "xs",
+                  wrap: true,
+                  offsetTop: "md",
+                  action: {
+                    type: "uri",
+                    label: "action",
+                    uri: returnUrl,
+                  },
+                },
+              ],
+            },
+            footer: {
+              type: "box",
+              layout: "vertical",
+              spacing: "sm",
+              contents: [
+                {
+                  type: "separator",
+                },
+                {
+                  type: "button",
+                  style: "link",
+                  action: {
+                    type: "uri",
+                    label: "查看紅包狀態",
+                    uri: returnUrl,
+                  },
+                  margin: "none",
+                },
+                {
+                  type: "box",
+                  layout: "vertical",
+                  contents: [
+                    {
+                      type: "separator",
+                      margin: "xs",
                     },
-                    style: "secondary",
-                  },
-                  {
-                    type: "button",
-                    action: {
-                      type: "uri",
-                      label: "傳送感謝小卡",
-                      uri: returnUrl,
-                    },
-                  },
-                  {
-                    type: "separator",
-                  },
-                  {
-                    type: "box",
-                    layout: "vertical",
-                    contents: [
-                      {
-                        type: "button",
-                        action: {
-                          type: "uri",
-                          label: "LINE禮物",
-                          uri: returnUrl,
+                    {
+                      type: "box",
+                      layout: "baseline",
+                      contents: [
+                        {
+                          type: "icon",
+                          url: "https://i.imgur.com/QdZ0eDc.png",
+                          margin: "none",
+                          scaling: true,
+                          offsetTop: "sm",
                         },
-                        position: "relative",
-                        margin: "none",
-                        height: "sm",
-                        style: "link",
-                        offsetTop: "none",
-                        offsetStart: "none",
-                        offsetEnd: "none",
-                      },
-                    ],
-                    action: {
-                      type: "uri",
-                      label: "action",
-                      uri: returnUrl,
+                        {
+                          type: "text",
+                          text: "紅包",
+                          color: "#8E8E8E",
+                          margin: "sm",
+                          size: "xs",
+                          offsetTop: "xs",
+                        },
+                        {
+                          type: "icon",
+                          url: "https://i.imgur.com/aKbXQ9D.png",
+                          margin: "xs",
+                          size: "xs",
+                          offsetTop: "sm",
+                        },
+                      ],
                     },
-                  },
-                ],
-              },
+                  ],
+                  margin: "sm",
+                },
+              ],
+              flex: 0,
             },
           },
-        ]);
-        if (result) {
-          alert(`[${result.status}] Message sent!`);
-        } else {
-          const [majorVer, minorVer, patchVer] = (
-            liff.getLineVersion() || ""
-          ).split(".");
+        },
+      ]);
+      if (result) {
+        alert(`[${result.status}] Message sent!`);
+      } else {
+        const [majorVer, minorVer, patchVer] = (
+          liff.getLineVersion() || ""
+        ).split(".");
 
-          if (minorVer === undefined) {
-            alert("ShareTargetPicker was canceled in external browser");
-            return;
-          }
+        if (minorVer === undefined) {
+          alert("ShareTargetPicker was canceled in external browser");
+          return;
+        }
 
-          if (
-            parseInt(majorVer) >= 10 &&
-            parseInt(minorVer) >= 10 &&
-            parseInt(patchVer) > 0
-          ) {
-            alert("ShareTargetPicker was canceled in LINE app");
-          }
+        if (
+          parseInt(majorVer) >= 10 &&
+          parseInt(minorVer) >= 10 &&
+          parseInt(patchVer) > 0
+        ) {
+          alert("ShareTargetPicker was canceled in LINE app");
         }
       }
+    }
 
-      async function sendShare_Ladder() {
-        let returnUrl = "";
-        if (document.getElementById("imageRadio").checked) {
-          returnUrl =
-            "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=image&downloadUrl=" +
-            document.getElementById("imgUrl").value +
-            "&previewUrl=" +
-            document.getElementById("imgUrl").value;
-        } else {
-          returnUrl =
-            "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=text&text=" +
-            encodeURIComponent(document.getElementById("fakeMessage").value);
-        }
-        name = await liff
-          .getProfile()
-          .then((profile) => {
-            return profile.displayName;
-          })
-          .catch((err) => {
-            return err;
-          });
-
-        const result = await liff.shareTargetPicker([
-          {
-            type: "flex",
-            altText: "爬梯子遊戲已建立，讓梯子決定您的命運吧！",
-            contents: {
-              type: "bubble",
-              size: "kilo",
-              hero: {
-                type: "image",
-                url: "https://img.onl/qCFiCL",
-                size: "full",
-                aspectRatio: "20:13",
-                aspectMode: "cover",
-                action: {
-                  type: "uri",
-                  uri: returnUrl,
-                },
-              },
-              body: {
-                type: "box",
-                layout: "vertical",
-                contents: [
-                  {
-                    type: "text",
-                    text: "爬梯子",
-                    weight: "bold",
-                    size: "md",
-                  },
-                  {
-                    type: "box",
-                    layout: "vertical",
-                    margin: "md",
-                    spacing: "sm",
-                    contents: [
-                      {
-                        type: "text",
-                        text: "我建立了一個爬梯子遊戲，馬上來看看結果吧！",
-                        wrap: true,
-                        color: "#666666",
-                        size: "sm",
-                        offsetEnd: "none",
-                        offsetStart: "none",
-                        offsetBottom: "none",
-                        offsetTop: "none",
-                        flex: 5,
-                      },
-                    ],
-                  },
-                ],
-                action: {
-                  type: "uri",
-                  label: "action",
-                  uri: returnUrl,
-                },
-              },
-              footer: {
-                type: "box",
-                layout: "vertical",
-                spacing: "sm",
-                contents: [
-                  {
-                    type: "separator",
-                    margin: "none",
-                  },
-                  {
-                    type: "button",
-                    style: "link",
-                    height: "sm",
-                    action: {
-                      type: "uri",
-                      label: "開啟爬梯子遊戲",
-                      uri: returnUrl,
-                    },
-                  },
-                  {
-                    type: "button",
-                    style: "link",
-                    height: "sm",
-                    action: {
-                      type: "uri",
-                      label: "查看全部結果",
-                      uri: returnUrl,
-                    },
-                  },
-                  {
-                    type: "separator",
-                  },
-                  {
-                    type: "box",
-                    layout: "vertical",
-                    contents: [],
-                    margin: "sm",
-                  },
-                ],
-                flex: 0,
-                margin: "none",
-                paddingTop: "none",
-              },
+    async function sendShare_invite() {
+      const result = await liff.shareTargetPicker([
+        {
+          "type": "flex",
+          "altText": "您收到一則比賽邀請！",
+          "contents": {
+            "type": "bubble",
+            "hero": {
+              "type": "image",
+              "url": "https://scontent.frmq2-2.fna.fbcdn.net/v/t39.30808-6/383807109_122139869036003326_324972815387725362_n.jpg?stp=dst-jpg_s960x960&_nc_cat=107&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=un4Gw1D5arAQ7kNvgHFrcTl&_nc_ht=scontent.frmq2-2.fna&gid=AEkOAH0cpc75jWPL9R_kmxa&oh=00_AYDdxRfxSlxyxNAlpa40u_7Fv10e5xyS2xGvyIT0sb_8Ug&oe=668C34AA",
+              "size": "full",
+              "aspectRatio": "20:13",
+              "aspectMode": "cover",
+              "action": {
+                "type": "uri",
+                "uri": "https://www.jjpoker.com.tw"
+              }
             },
-          },
-        ]);
-        if (result) {
-          alert(`[${result.status}] Message sent!`);
-        } else {
-          const [majorVer, minorVer, patchVer] = (
-            liff.getLineVersion() || ""
-          ).split(".");
-
-          if (minorVer === undefined) {
-            alert("ShareTargetPicker was canceled in external browser");
-            return;
-          }
-
-          if (
-            parseInt(majorVer) >= 10 &&
-            parseInt(minorVer) >= 10 &&
-            parseInt(patchVer) > 0
-          ) {
-            alert("ShareTargetPicker was canceled in LINE app");
-          }
-        }
-      }
-
-      async function sendShare_Pay() {
-        let returnUrl = "";
-        if (document.getElementById("imageRadio").checked) {
-          returnUrl =
-            "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=image&downloadUrl=" +
-            document.getElementById("imgUrl").value +
-            "&previewUrl=" +
-            document.getElementById("imgUrl").value;
-        } else {
-          returnUrl =
-            "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=text&text=" +
-            encodeURIComponent(document.getElementById("fakeMessage").value);
-        }
-
-        name = await liff
-          .getProfile()
-          .then((profile) => {
-            return profile.displayName;
-          })
-          .catch((err) => {
-            return err;
-          });
-        const result = await liff.shareTargetPicker([
-          {
-            type: "flex",
-            altText:
-              "已收到NT$ " +
-              document.getElementById("linePayAmount").value +
-              "的轉帳。",
-            contents: {
-              type: "bubble",
-              size: "hecto",
-              hero: {
-                type: "image",
-                url: "https://i.imgur.com/j5VkCxE.png",
-                size: "full",
-                aspectRatio: "20:13",
-                aspectMode: "cover",
-                action: {
-                  type: "uri",
-                  uri: returnUrl,
+            "body": {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "6600限時錦標賽",
+                  "weight": "bold",
+                  "size": "xl"
                 },
-                position: "relative",
-              },
-              body: {
-                type: "box",
-                layout: "vertical",
-                contents: [
-                  {
-                    type: "text",
-                    text: "LINE Pay",
-                    weight: "bold",
-                    size: "xs",
-                    action: {
-                      type: "uri",
-                      label: "action",
-                      uri: returnUrl,
+                {
+                  "type": "box",
+                  "layout": "baseline",
+                  "contents": [
+                    {
+                      "type": "icon",
+                      "url": "https://cdn-icons-png.flaticon.com/128/2549/2549900.png",
+                      "position": "relative",
+                      "offsetTop": "2px"
                     },
-                  },
-                  {
-                    type: "text",
-                    text:
-                      "您已收到 NT$ " +
-                      document.getElementById("linePayAmount").value +
-                      "。（來自：" +
-                      name +
-                      "）",
-                    size: "xs",
-                    contents: [],
-                    color: "#8E8E8E",
-                    action: {
-                      type: "uri",
-                      label: "action",
-                      uri: "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=image&downloadUrl=https://i.imgur.com/ait6uEi.jpg&previewUrl=https://i.imgur.com/ait6uEi.jpg",
+                    {
+                      "type": "text",
+                      "text": "JJPoker-民權店",
+                      "margin": "md"
+                    }
+                  ],
+                  "paddingAll": "sm",
+                  "margin": "sm"
+                },
+                {
+                  "type": "box",
+                  "layout": "baseline",
+                  "contents": [
+                    {
+                      "type": "icon",
+                      "size": "sm",
+                      "url": "https://cdn-icons-png.flaticon.com/128/747/747376.png",
+                      "offsetTop": "2px"
                     },
-                  },
-                  {
-                    type: "button",
-                    position: "relative",
-                    style: "secondary",
-                    height: "sm",
-                    margin: "lg",
-                    color: "#F0F0F0",
-                    action: {
-                      type: "uri",
-                      label: "瞭解更多",
-                      uri: returnUrl,
+                    {
+                      "type": "text",
+                      "text": "6 / 10",
+                      "size": "sm",
+                      "margin": "md",
+                      "flex": 0
+                    }
+                  ],
+                  "paddingAll": "sm",
+                  "margin": "sm"
+                },
+                {
+                  "type": "box",
+                  "layout": "baseline",
+                  "margin": "sm",
+                  "contents": [
+                    {
+                      "type": "icon",
+                      "size": "sm",
+                      "url": "https://cdn-icons-png.flaticon.com/128/535/535239.png",
+                      "offsetTop": "2px"
                     },
-                    scaling: true,
-                    offsetEnd: "none",
-                  },
-                ],
-                action: {
-                  type: "uri",
-                  label: "action",
-                  uri: returnUrl,
+                    {
+                      "type": "text",
+                      "text": "台中市民權路153號",
+                      "size": "sm",
+                      "margin": "md",
+                      "flex": 0
+                    }
+                  ],
+                  "paddingAll": "sm"
                 },
-              },
-              footer: {
-                type: "box",
-                layout: "baseline",
-                contents: [
-                  {
-                    type: "icon",
-                    url: "https://i.imgur.com/LriSrg0.png",
-                    margin: "none",
-                    size: "xs",
-                    scaling: true,
-                    offsetTop: "xs",
-                  },
-                  {
-                    type: "text",
-                    text: "LINE Pay",
-                    margin: "sm",
-                    size: "xxs",
-                    color: "#8E8E8E",
-                  },
-                  {
-                    type: "icon",
-                    url: "https://i.imgur.com/aKbXQ9D.png",
-                    margin: "sm",
-                    size: "xxs",
-                    offsetTop: "xs",
-                  },
-                ],
-                action: {
-                  type: "uri",
-                  label: "action",
-                  uri: returnUrl,
-                },
-                position: "relative",
-              },
-              styles: {
-                footer: {
-                  separator: true,
-                },
-              },
+                {
+                  "type": "box",
+                  "layout": "baseline",
+                  "contents": [
+                    {
+                      "type": "icon",
+                      "size": "sm",
+                      "url": "https://cdn-icons-png.flaticon.com/128/3114/3114812.png",
+                      "offsetTop": "2px"
+                    },
+                    {
+                      "type": "text",
+                      "text": "23:00",
+                      "size": "sm",
+                      "margin": "md",
+                      "flex": 0
+                    }
+                  ],
+                  "paddingAll": "sm",
+                  "margin": "sm"
+                }
+              ]
             },
-          },
-        ]);
-        if (result) {
-          alert(`[${result.status}] Message sent!`);
-        } else {
-          const [majorVer, minorVer, patchVer] = (
-            liff.getLineVersion() || ""
-          ).split(".");
-
-          if (minorVer === undefined) {
-            alert("ShareTargetPicker was canceled in external browser");
-            return;
-          }
-
-          if (
-            parseInt(majorVer) >= 10 &&
-            parseInt(minorVer) >= 10 &&
-            parseInt(patchVer) > 0
-          ) {
-            alert("ShareTargetPicker was canceled in LINE app");
-          }
-        }
-      }
-
-      async function Red_Env() {
-        let returnUrl = "";
-        if (document.getElementById("imageRadio").checked) {
-          returnUrl =
-            "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=image&downloadUrl=" +
-            document.getElementById("imgUrl").value +
-            "&previewUrl=" +
-            document.getElementById("imgUrl").value;
-        } else {
-          returnUrl =
-            "https://liff.line.me/1657022499-njBkN1k3?auto=yes&type=text&text=" +
-            encodeURIComponent(document.getElementById("fakeMessage").value);
-        }
-        name = await liff
-          .getProfile()
-          .then((profile) => {
-            return profile.displayName;
-          })
-          .catch((err) => {
-            return err;
-          });
-
-        const result = await liff.shareTargetPicker([
-          {
-            type: "flex",
-            altText: "您收到一則紅包訊息！",
-            contents: {
-              type: "bubble",
-              size: "kilo",
-              hero: {
-                type: "image",
-                url: "https://i.imgur.com/2Fbb9wM.png",
-                size: "full",
-                aspectRatio: "20:13",
-                aspectMode: "cover",
-                action: {
-                  type: "uri",
-                  label: "action",
-                  uri: returnUrl,
+            "footer": {
+              "type": "box",
+              "layout": "vertical",
+              "spacing": "sm",
+              "contents": [
+                {
+                  "type": "button",
+                  "style": "link",
+                  "height": "sm",
+                  "action": {
+                    "type": "message",
+                    "label": "立即報名",
+                    "text": "+1"
+                  }
                 },
-              },
-              body: {
-                type: "box",
-                layout: "vertical",
-                contents: [
-                  {
-                    type: "text",
-                    text: "LINE Pay 紅包",
-                    weight: "bold",
-                    size: "sm",
-                    color: "#000000",
-                    action: {
-                      type: "uri",
-                      label: "action",
-                      uri: returnUrl,
-                    },
-                  },
-                  {
-                    type: "text",
-                    text:
-                      name +
-                      "發紅包了，限時3天！快來試試手氣！(紅包將在3天後過期並退還給好友。)",
-                    size: "xs",
-                    wrap: true,
-                    offsetTop: "md",
-                    action: {
-                      type: "uri",
-                      label: "action",
-                      uri: returnUrl,
-                    },
-                  },
-                ],
-              },
-              footer: {
-                type: "box",
-                layout: "vertical",
-                spacing: "sm",
-                contents: [
-                  {
-                    type: "separator",
-                  },
-                  {
-                    type: "button",
-                    style: "link",
-                    action: {
-                      type: "uri",
-                      label: "查看紅包狀態",
-                      uri: returnUrl,
-                    },
-                    margin: "none",
-                  },
-                  {
-                    type: "box",
-                    layout: "vertical",
-                    contents: [
-                      {
-                        type: "separator",
-                        margin: "xs",
-                      },
-                      {
-                        type: "box",
-                        layout: "baseline",
-                        contents: [
-                          {
-                            type: "icon",
-                            url: "https://i.imgur.com/QdZ0eDc.png",
-                            margin: "none",
-                            scaling: true,
-                            offsetTop: "sm",
-                          },
-                          {
-                            type: "text",
-                            text: "紅包",
-                            color: "#8E8E8E",
-                            margin: "sm",
-                            size: "xs",
-                            offsetTop: "xs",
-                          },
-                          {
-                            type: "icon",
-                            url: "https://i.imgur.com/aKbXQ9D.png",
-                            margin: "xs",
-                            size: "xs",
-                            offsetTop: "sm",
-                          },
-                        ],
-                      },
-                    ],
-                    margin: "sm",
-                  },
-                ],
-                flex: 0,
-              },
-            },
-          },
-        ]);
-        if (result) {
-          alert(`[${result.status}] Message sent!`);
-        } else {
-          const [majorVer, minorVer, patchVer] = (
-            liff.getLineVersion() || ""
-          ).split(".");
-
-          if (minorVer === undefined) {
-            alert("ShareTargetPicker was canceled in external browser");
-            return;
-          }
-
-          if (
-            parseInt(majorVer) >= 10 &&
-            parseInt(minorVer) >= 10 &&
-            parseInt(patchVer) > 0
-          ) {
-            alert("ShareTargetPicker was canceled in LINE app");
-          }
-        }
-      }
-
-      async function sendShare_invite() {
-        const result = await liff.shareTargetPicker([
-          {
-            type: "flex",
-            altText: "您收到一則比賽邀請！",
-            contents: {
-              type: "bubble",
-              hero: {
-                type: "image",
-                url: "https://scontent.frmq2-2.fna.fbcdn.net/v/t39.30808-6/383807109_122139869036003326_324972815387725362_n.jpg?stp=dst-jpg_s960x960&_nc_cat=107&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=un4Gw1D5arAQ7kNvgHFrcTl&_nc_ht=scontent.frmq2-2.fna&gid=AEkOAH0cpc75jWPL9R_kmxa&oh=00_AYDdxRfxSlxyxNAlpa40u_7Fv10e5xyS2xGvyIT0sb_8Ug&oe=668C34AA",
-                size: "full",
-                aspectRatio: "20:13",
-                aspectMode: "cover",
-                action: {
-                  type: "uri",
-                  uri: "https://www.jjpoker.com.tw",
+                {
+                  "type": "button",
+                  "style": "link",
+                  "height": "sm",
+                  "action": {
+                    "type": "uri",
+                    "label": "前往註冊",
+                    "uri": "https://www.jjpoker.com.tw/Registered"
+                  }
                 },
-              },
-              body: {
-                type: "box",
-                layout: "vertical",
-                contents: [
-                  {
-                    type: "text",
-                    text: "6600限時錦標賽",
-                    weight: "bold",
-                    size: "xl",
-                  },
-                  {
-                    type: "box",
-                    layout: "baseline",
-                    contents: [
-                      {
-                        type: "icon",
-                        url: "https://cdn-icons-png.flaticon.com/128/2549/2549900.png",
-                        position: "relative",
-                        offsetTop: "2px",
-                      },
-                      {
-                        type: "text",
-                        text: "JJPoker-民權店",
-                        margin: "md",
-                      },
-                    ],
-                    paddingAll: "sm",
-                    margin: "md",
-                  },
-                  {
-                    type: "box",
-                    layout: "baseline",
-                    contents: [
-                      {
-                        type: "icon",
-                        size: "sm",
-                        url: "https://cdn-icons-png.flaticon.com/128/747/747376.png",
-                        offsetTop: "2px",
-                      },
-                      {
-                        type: "text",
-                        text: "6 / 10",
-                        size: "sm",
-                        margin: "md",
-                        flex: 0,
-                      },
-                    ],
-                    paddingAll: "sm",
-                    margin: "md",
-                  },
-                  {
-                    type: "box",
-                    layout: "baseline",
-                    margin: "md",
-                    contents: [
-                      {
-                        type: "icon",
-                        size: "sm",
-                        url: "https://cdn-icons-png.flaticon.com/128/535/535239.png",
-                        offsetTop: "2px",
-                      },
-                      {
-                        type: "text",
-                        text: "台中市民權路153號",
-                        size: "sm",
-                        margin: "md",
-                        flex: 0,
-                      },
-                    ],
-                    paddingAll: "sm",
-                  },
-                  {
-                    type: "box",
-                    layout: "baseline",
-                    contents: [
-                      {
-                        type: "icon",
-                        size: "sm",
-                        url: "https://cdn-icons-png.flaticon.com/128/3114/3114812.png",
-                        offsetTop: "2px",
-                      },
-                      {
-                        type: "text",
-                        text: "23:00",
-                        size: "sm",
-                        margin: "md",
-                        flex: 0,
-                      },
-                    ],
-                    paddingAll: "sm",
-                    margin: "md",
-                  },
-                ],
-              },
-              footer: {
-                type: "box",
-                layout: "vertical",
-                spacing: "sm",
-                contents: [
-                  {
-                    type: "button",
-                    style: "link",
-                    height: "sm",
-                    action: {
-                      type: "postback",
-                      label: "報名參加",
-                      data: "hello",
-                      displayText: "+1",
-                    },
-                  },
-                  {
-                    type: "button",
-                    style: "link",
-                    height: "sm",
-                    action: {
-                      type: "uri",
-                      label: "會員註冊",
-                      uri: "https://www.jjpoker.com.tw/Registered",
-                    },
-                  },
-                  {
-                    type: "box",
-                    layout: "vertical",
-                    contents: [],
-                    margin: "sm",
-                  },
-                ],
-                flex: 0,
-              },
-            },
+                {
+                  "type": "box",
+                  "layout": "vertical",
+                  "contents": [],
+                  "margin": "sm"
+                }
+              ],
+              "flex": 0
+            }
           },
-        ]);
-        console.log(result);
-        if (result) {
-          alert(`[${result.status}] Message sent!`);
-        } else {
-          const [majorVer, minorVer, patchVer] = (
-            liff.getLineVersion() || ""
-          ).split(".");
+        },
+      ]);
+      console.log(result);
+      if (result) {
+        alert(`[${result.status}] Message sent!`);
+      } else {
+        const [majorVer, minorVer, patchVer] = (
+          liff.getLineVersion() || ""
+        ).split(".");
 
-          if (minorVer === undefined) {
-            alert("ShareTargetPicker was canceled in external browser");
-            return;
-          }
+        if (minorVer === undefined) {
+          alert("ShareTargetPicker was canceled in external browser");
+          return;
+        }
 
-          if (
-            parseInt(majorVer) >= 10 &&
-            parseInt(minorVer) >= 10 &&
-            parseInt(patchVer) > 0
-          ) {
-            alert("ShareTargetPicker was canceled in LINE app");
-          }
+        if (
+          parseInt(majorVer) >= 10 &&
+          parseInt(minorVer) >= 10 &&
+          parseInt(patchVer) > 0
+        ) {
+          alert("ShareTargetPicker was canceled in LINE app");
         }
       }
+    }
 
-      function logOut() {
-        liff.logout();
-        window.location.reload();
-      }
+    function logOut() {
+      liff.logout();
+      window.location.reload();
+    }
 
-      async function main() {
-        await liff.init({ liffId: "2004714738-5DPAlxA8" });
-        if (liff.isLoggedIn()) {
-          document.getElementById("btnShare").style.display = "block";
-          document.getElementById("btnShare2").style.display = "block";
-          document.getElementById("btnShare3").style.display = "block";
-          document.getElementById("btnShare4").style.display = "block";
-          document.getElementById("btnShare5").style.display = "block";
-          document.getElementById("inputContainer").style.display = "flex";
-          document.getElementById("inputContainer2").style.display = "flex";
-          if (!liff.isInClient()) {
-            document.getElementById("btnLogOut").style.display = "block";
-          }
-        } else {
-          document.getElementById("btnLogin").style.display = "block";
+    async function main() {
+      await liff.init({ liffId: "2004714738-5DPAlxA8" });
+      if (liff.isLoggedIn()) {
+        document.getElementById("btnShare").style.display = "block";
+        document.getElementById("btnShare2").style.display = "block";
+        document.getElementById("btnShare3").style.display = "block";
+        document.getElementById("btnShare4").style.display = "block";
+        document.getElementById("btnShare5").style.display = "block";
+        document.getElementById("inputContainer").style.display = "flex";
+        document.getElementById("inputContainer2").style.display = "flex";
+        if (!liff.isInClient()) {
+          document.getElementById("btnLogOut").style.display = "block";
         }
+      } else {
+        document.getElementById("btnLogin").style.display = "block";
       }
-      main();
-    </script>
-  </body>
+    }
+    main();
+  </script>
+</body>
+
 </html>
