@@ -81,6 +81,10 @@
     分享賽事1
   </button>
 
+  <button id="btnShare6" onclick="boss_invite()" style="display: none; margin: 20px auto; padding: 20px">
+    Boss HILLA
+  </button>
+
   <button id="btnLogin" onclick="liff.login()" style="display: none; margin: 20px auto; padding: 20px">
     Login
   </button>
@@ -906,6 +910,175 @@
       }
     }
 
+    async function boss_invite() {
+      const result = await liff.shareTargetPicker([
+        {
+          type: "flex",
+          altText: "爬梯子遊戲已建立，讓梯子決定您的命運吧！",
+          contents: {
+            "type": "bubble",
+            "body": {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "image",
+                  "url": "https://static.zerochan.net/Verus.Hilla.full.3959284.jpg",
+                  "size": "full",
+                  "aspectMode": "cover",
+                  "aspectRatio": "3:4",
+                  "gravity": "top",
+                  "position": "relative"
+                },
+                {
+                  "type": "box",
+                  "layout": "horizontal",
+                  "contents": [
+                    {
+                      "type": "box",
+                      "layout": "horizontal",
+                      "contents": [
+                        {
+                          "type": "box",
+                          "layout": "baseline",
+                          "contents": [
+                            {
+                              "type": "icon",
+                              "url": "https://cdn-icons-png.flaticon.com/512/151/151846.png",
+                              "size": "xl",
+                              "offsetStart": "xl"
+                            },
+                            {
+                              "type": "text",
+                              "text": "HARD",
+                              "size": "xxl",
+                              "color": "#ffffff",
+                              "weight": "bold",
+                              "align": "center"
+                            },
+                            {
+                              "type": "icon",
+                              "url": "https://cdn-icons-png.flaticon.com/512/11488/11488622.png",
+                              "offsetEnd": "xl",
+                              "size": "xl"
+                            }
+                          ],
+                          "alignItems": "flex-start",
+                          "justifyContent": "flex-start"
+                        }
+                      ],
+                      "backgroundColor": "#343331aa",
+                      "height": "50px",
+                      "alignItems": "center",
+                      "cornerRadius": "lg"
+                    },
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "filler"
+                        },
+                        {
+                          "type": "box",
+                          "layout": "baseline",
+                          "contents": [
+                            {
+                              "type": "filler"
+                            },
+                            {
+                              "type": "text",
+                              "text": "GO",
+                              "color": "#ffffff",
+                              "flex": 0,
+                              "offsetTop": "-2px",
+                              "size": "xxl",
+                              "weight": "bold"
+                            },
+                            {
+                              "type": "filler"
+                            }
+                          ],
+                          "spacing": "sm"
+                        },
+                        {
+                          "type": "filler"
+                        }
+                      ],
+                      "borderWidth": "1px",
+                      "cornerRadius": "4px",
+                      "spacing": "sm",
+                      "margin": "xxl",
+                      "height": "45px",
+                      "action": {
+                        "type": "message",
+                        "label": "action",
+                        "text": "+1"
+                      },
+                      "width": "80px",
+                      "position": "relative",
+                      "background": {
+                        "type": "linearGradient",
+                        "angle": "0deg",
+                        "startColor": "#f0992a",
+                        "endColor": "#eabd15"
+                      }
+                    }
+                  ],
+                  "position": "absolute",
+                  "offsetBottom": "0px",
+                  "offsetStart": "0px",
+                  "offsetEnd": "0px",
+                  "paddingAll": "10px",
+                  "paddingTop": "18px",
+                  "justifyContent": "center",
+                  "alignItems": "center"
+                },
+                {
+                  "type": "box",
+                  "layout": "vertical",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": "HILLA",
+                      "color": "#FFFFFF",
+                      "size": "xxl",
+                      "weight": "bold"
+                    }
+                  ],
+                  "position": "absolute",
+                  "offsetTop": "18px",
+                  "offsetEnd": "28px"
+                }
+              ],
+              "paddingAll": "0px"
+            }
+          },
+        },
+      ]);
+      if (result) {
+        alert(`[${result.status}] Message sent!`);
+      } else {
+        const [majorVer, minorVer, patchVer] = (
+          liff.getLineVersion() || ""
+        ).split(".");
+
+        if (minorVer === undefined) {
+          alert("ShareTargetPicker was canceled in external browser");
+          return;
+        }
+
+        if (
+          parseInt(majorVer) >= 10 &&
+          parseInt(minorVer) >= 10 &&
+          parseInt(patchVer) > 0
+        ) {
+          alert("ShareTargetPicker was canceled in LINE app");
+        }
+      }
+    }
+
+
     function logOut() {
       liff.logout();
       window.location.reload();
@@ -919,6 +1092,7 @@
         document.getElementById("btnShare3").style.display = "block";
         document.getElementById("btnShare4").style.display = "block";
         document.getElementById("btnShare5").style.display = "block";
+        document.getElementById("btnShare6").style.display = "block";
         document.getElementById("inputContainer").style.display = "flex";
         document.getElementById("inputContainer2").style.display = "flex";
         if (!liff.isInClient()) {
